@@ -96,9 +96,6 @@ ENV/
 env.bak/
 venv.bak/
 
-# Visual Studio Code
-.vscode/
-
 # PyCharm
 .idea/
 
