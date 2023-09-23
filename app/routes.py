@@ -1,19 +1,15 @@
 from flask import jsonify
-
-from app.contexts.index import get_all_contexts
+from app.repositories.index import get_all_contexts_repository, get_context_repository
 
 
 def configure_routes(app):
     @app.route("/")
-    def get_contexts():
-        return jsonify({"contexts": get_all_contexts()})
+    def get_contexts_controller():
+        return jsonify({"contexts": get_all_contexts_repository()})
 
-    # @app.route('/youtube/<video_id>/timed-comments/')
-    # def get_timed_comments(video_id):
-    #     # Lógica aqui
-    #     return jsonify({"message": "Timed comments for video " + video_id})
+    @app.route("/<context_id>/<video_id>/timed-comments/")
+    def get_timed_comments_controller(context_id, video_id):
+        context = get_context_repository(context_id)
+        coments = context["timed_comments_service"].get_by_video_id(video_id)
 
-    # @app.route('/youtube/<video_id>/live-comments/')
-    # def get_live_comments(video_id):
-    #     # Lógica aqui
-    #     return jsonify({"message": "Live comments for video " + video_id})
+        return jsonify({"timed-comments": coments})
