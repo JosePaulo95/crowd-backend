@@ -4,7 +4,7 @@ from typing import List
 from app.types.comment_type import CommentType
 
 
-class TimedCommentsService(ABC):
+class TimedCommentsServiceType(ABC):
     title: str
 
     def __init__(self, title: str):
