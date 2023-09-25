@@ -1,5 +1,7 @@
-from typing import Dict
-
 from app.services.service_interface import TimedCommentsService
 
-ContextType = Dict[str, TimedCommentsService]
+from typing import TypedDict
+
+
+class ContextType(TypedDict):
+    timed_comments_service: TimedCommentsService

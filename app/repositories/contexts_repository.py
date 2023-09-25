@@ -4,4 +4,10 @@ from app.types.context_type import ContextType
 
 
 def contexts_repository() -> Dict[str, ContextType]:
-    return {"youtube": {"timed_comments_service": YoutubeTimedCommentsService()}}
+    return {
+        "youtube": {
+            "timed_comments_service": YoutubeTimedCommentsService(
+                "AIzaSyC-aDn5Ud486MMctuBepELtvgiaRUUrJhI"
+            )
+        }
+    }
