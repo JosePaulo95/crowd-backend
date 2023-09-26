@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
+
 from typing import List
+
 
 from app.types.comment_type import CommentType
 

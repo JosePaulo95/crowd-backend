@@ -4,4 +4,5 @@ from typing import TypedDict
 
 
 class ContextType(TypedDict):
-    timed_comments_service: TimedCommentsServiceType
+    platform: str
+    comments_service: TimedCommentsServiceType

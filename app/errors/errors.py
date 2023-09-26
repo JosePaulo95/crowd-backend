@@ -1,0 +1,2 @@
+class InvalidPlatformError(Exception):
+    pass
