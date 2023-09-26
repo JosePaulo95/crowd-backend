@@ -1,5 +1,9 @@
 from flask import jsonify
-from app.errors.errors import InvalidPlatformError
+from app.errors.errors import (
+    InvalidPlatformError,
+    NetworkErrorException,
+    QuotaExceededException,
+)
 from app.repositories.index import get_all_contexts_repository, get_context_repository
 
 
@@ -16,3 +20,7 @@ def configure_routes(app):
             return jsonify({"timed-comments": coments})
         except InvalidPlatformError as e:
             return jsonify({"error": str(e)}), 400
+        except QuotaExceededException as e:
+            return jsonify({"error": str(e)}), 403
+        except NetworkErrorException as e:
+            return jsonify({"error": str(e)}), 403
