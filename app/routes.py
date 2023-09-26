@@ -3,6 +3,7 @@ from app.errors.errors import (
     InvalidPlatformError,
     NetworkErrorException,
     QuotaExceededException,
+    ExternalServiceFieldException,
 )
 from app.repositories.index import get_all_contexts_repository, get_context_repository
 
@@ -19,6 +20,8 @@ def configure_routes(app):
             coments = context["comments_service"].get_by_video_id(video_id)
             return jsonify({"timed-comments": coments})
         except InvalidPlatformError as e:
+            return jsonify({"error": str(e)}), 400
+        except ExternalServiceFieldException as e:
             return jsonify({"error": str(e)}), 400
         except QuotaExceededException as e:
             return jsonify({"error": str(e)}), 403

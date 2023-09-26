@@ -8,3 +8,7 @@ class QuotaExceededException(Exception):
 
 class NetworkErrorException(Exception):
     pass
+
+
+class ExternalServiceFieldException(Exception):
+    pass
