@@ -1,6 +1,7 @@
 from typing import List
 
 from app.utils import utils
+
 from app.clients.youtube_client import YouTubeClient
 
 
@@ -18,6 +19,9 @@ class YoutubeTimedCommentsService(TimedCommentsServiceType):
 
     def get_by_video_id(self, video_id: str) -> List[CommentType]:
         numeric_comments = self.yt_client.fetch_numeric_comments(video_id)
-        timestamp_comments = utils.extractTimeAndFormat(numeric_comments)
 
-        return timestamp_comments
+        comments_w_timestamps = utils.enhance_timestamps(numeric_comments)
+
+        filtered = utils.filter_with_timestamps(comments_w_timestamps)
+
+        return filtered

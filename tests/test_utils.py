@@ -1,8 +1,11 @@
 import pytest
+
 from app.types.comment_type import CommentType
+
 from app.utils.utils import (
-    extractTimeAndFormat,
+    enhance_timestamps,
 )  # Substitua 'your_module' pelo nome real do seu módulo
+
 from typing import List
 import unittest
 
@@ -21,7 +24,7 @@ class TestExtractTimeAndFormat(unittest.TestCase):
             {"text": "Ainda bem que o sylas não é nordestino", "timestamp": None},
         ]
 
-        self.assertEqual(extractTimeAndFormat(sample_data), expected_result)
+        self.assertEqual(enhance_timestamps(sample_data), expected_result)
 
 
 if __name__ == "__main__":
